@@ -1,0 +1,216 @@
+@import "_reset.scss";
+
+body {
+	height: 100%;
+	line-height: 1;
+	font-size: 14px;
+	color: #252B42;
+	font-weight: 500;
+	font-family: Montserrat;
+	margin: 0;
+}
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	/* Для футера */
+	flex-direction: column;
+	/* Для футера */
+}
+
+._container {
+	max-width: 1046px;
+	margin: 0 auto;
+	padding: 0 15px;
+	/* Что бы не прилипал сайт к границам */
+	box-sizing: content-box;
+}
+
+.page {
+
+	// .page__map
+	&__map {
+		background: rgba(55, 55, 55, 255);
+	}
+}
+
+.map {
+
+	// .map__container
+	&__container {}
+
+	// .map__block-map
+	&__block-map {
+		margin-top: 20px;
+	}
+}
+
+.block-map {
+
+	// .block-map__pic
+	&__pic {
+		max-width: 850px;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	// .block-map__point
+	&__point {
+	
+		// .block-map__point_krakow
+		&_krakow {
+			top: 33.5%;
+			left: 59.3%;
+		}
+	
+		// .block-map__point_hamburg
+		&_hamburg {
+			top: 22.5%;
+			left: 42.2%;
+		}
+	
+		// .block-map__point_turin
+		&_turin {
+			top: 57.5%;
+			left: 38.1%;
+		}
+	
+		// .block-map__point_madrid
+		&_madrid {
+			top: 73.2%;
+			left: 14.6%;
+		}
+	}
+
+	// .block-map__tooltip
+	&__tooltip {
+	
+		// .block-map__tooltip_krakow
+		&_krakow {
+			top: 14%;
+			left: 58.1%;
+		}
+	
+		// .block-map__tooltip_hamburg
+		&_hamburg {
+			top: 3%;
+			left: 41%;
+		}
+
+		// .block-map__tooltip_turin
+		&_turin {
+			top: 38%;
+			left: 36.9%;
+		}
+
+		// .block-map__tooltip_madrid
+		&_madrid {
+			top: 53.5%;
+			left: 13.5%;
+		}
+	}
+}
+
+.point {
+	cursor: pointer;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	background: rgb(255 0 71 / 40%);
+	border: 1px solid rgba(255 0 71);
+	opacity: 0;
+	animation: animate 1.5s linear infinite;
+
+	&::before,
+	&::after {
+		border-radius: 100%;
+		border: 1px solid rgba(255 0 71);
+		width: 30px;
+		height: 30px;
+		content: "";
+		position: absolute;
+		top: -31%;
+		left: -6px;
+	}
+
+	&:hover + .tooltip {
+		transform: scaleX(1);
+		opacity: 1;
+		transition: 1s;
+	}
+
+	@keyframes animate {
+		0% {
+			transform: scale(0.5);
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1.2);
+			opacity: 0;
+		}
+	}
+}
+
+.tooltip {
+	padding: 10px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: rgba(55, 55, 55, 255);
+	width: 200px;
+	height: 100px;
+	opacity: 0;
+	transform: scaleX(0);
+	transition: 0.5s 3s;
+
+	&:before {
+		content: " ";
+		position: absolute;
+		top: 99%;
+		left: 6%;
+		width: 0;
+		height: 0;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-top: 10px solid rgba(55, 55, 55, 255);
+	}
+
+	// .tooltip__title
+	&__title {
+		color: white;
+		font-weight: 600;
+		text-align: left;
+		margin-bottom: 5px;
+	}
+
+	// .tooltip__data
+	&__data {
+		color: white;
+		font-style: italic;
+		text-align: left;
+		margin-bottom: 5px;
+	}
+
+	// .tooltip__btn
+	&__btn {
+		display: flex;
+		width: 180px;
+		height: 35px;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: white;
+		font-weight: 600;
+		text-transform: uppercase;
+		background: #ff0047;
+	}
+}
+
